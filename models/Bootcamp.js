@@ -21,7 +21,7 @@ const BootcampSchema = new mongoose.Schema({
       "Please use a valid URL with HTTP or HTTPS",
     ],
   },
-  phone: {
+  mobile: {
     type: String,
     maxlength: [20, "Phone number can not be longer than 20 characters"],
   },
@@ -41,12 +41,9 @@ const BootcampSchema = new mongoose.Schema({
     type: {
       type: String,
       enum: ["Point"],
-      required: true,
     },
     coordinates: {
       type: [Number],
-      required: true,
-      index: "2dsphere",
     },
     formattedAddress: String,
     street: String,
@@ -96,7 +93,7 @@ const BootcampSchema = new mongoose.Schema({
   },
   createAt: {
     type: Date,
-    default: Data.now,
+    default: Date.now,
   },
 });
 
