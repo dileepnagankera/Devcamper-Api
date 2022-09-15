@@ -13,7 +13,10 @@ exports.getCourses = asyncHandler(async (req, res, next) => {
   if (req.params.bootcamId) {
     query = Course.find({ bootcamp: req.params.bootcamId });
   } else {
-    query = Course.find();
+    query = Course.find().populate({
+      path: "bootcamp",
+      select: "name description",
+    });
   }
   const courses = await query;
 
